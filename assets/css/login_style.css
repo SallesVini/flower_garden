@@ -2,7 +2,9 @@
 body {
     background-color: #e4e3e3; /* Cor de fundo neutra */
     background-image: url("../assets/img/flowers-background.png"); /* Imagem de flores suave */
-    background-size: contain; /* A imagem será dimensionada para caber no container */
+    background-size: cover; /* Cobre toda a área da tela */
+
+    /*background-size: contain;  A imagem será dimensionada para caber no container */
     background-repeat: no-repeat; /* Evitar repetição da imagem */
     background-position: top center; /* Centraliza no topo */
     background-attachment: fixed; /* Fixa a imagem ao fundo ao rolar a página */
@@ -159,25 +161,26 @@ form {
         padding: 20px;
         width: 90%;
         max-width: 350px;
+        margin-bottom: 20px;
     }
 
     .login-container h1 {
-        font-size: 22px; /* Reduzido de 28px */
+        font-size: 22px; 
     }
 
     .login-container h5 {
-        font-size: 12px; /* Reduzido de 14px */
+        font-size: 12px; 
     }
 
     .login-container input[type="email"],
     .login-container input[type="password"],
     .login-container button {
-        font-size: 14px; /* Reduzido de 16px */
-        padding: 12px; /* Reduzido de 15px */
+        font-size: 14px; 
+        padding: 12px; 
     }
 
     .links-container {
-        font-size: 12px; /* Reduzido de 14px */
+        font-size: 12px; 
     }
 }
 
@@ -186,32 +189,33 @@ form {
     .login-container {
         padding: 15px;
         max-width: 300px;
+        margin-bottom: 20px;
     }
 
     .login-container img.logo {
-        width: 70px; /* Reduzido de 100px */
+        width: 70px; 
     }
 
     .login-container h1 {
-        font-size: 18px; /* Reduzido de 22px */
+        font-size: 18px; 
     }
 
     .login-container h5 {
-        font-size: 11px; /* Reduzido de 12px */
+        font-size: 11px; 
     }
 
     .login-container input[type="email"],
     .login-container input[type="password"] {
-        font-size: 13px; /* Reduzido de 14px */
-        padding: 10px; /* Reduzido de 12px */
+        font-size: 13px; 
+        padding: 10px; 
     }
 
     .login-container button {
-        padding: 10px; /* Reduzido de 12px */
-        font-size: 13px; /* Reduzido de 14px */
+        padding: 10px; 
+        font-size: 13px; 
     }
 
     .links-container {
-        font-size: 11px; /* Reduzido de 12px */
+        font-size: 11px; 
     }
 }

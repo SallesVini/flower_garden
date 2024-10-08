@@ -166,7 +166,7 @@ form {
 @media (max-width: 480px) {
     .signup-container {
         padding: 15px;
-        max-width: 100%; /* Ocupa toda a largura */
+        max-width: 90%; /* Ocupa toda a largura */
     }
 
     .signup-container h1 {
