@@ -130,3 +130,61 @@ form {
     background-position: right 10px center; /* Posição da seta */
     background-size: 15px; /* Tamanho da seta */
 }
+
+/* --------------------------------------Layout responsivo-------------------------------------- */
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 20px;
+        max-width: 90%; /* Aumenta a largura para ocupar mais espaço */
+    }
+
+    .signup-container h1 {
+        font-size: 24px; /* Reduzido de 28px */
+    }
+
+    .signup-container input,
+    .signup-container select {
+        width: 100%; /* Ocupa toda a largura */
+        margin: 10px 0; /* Margem vertical */
+        padding: 12px; /* Reduzido de 15px */
+        font-size: 14px; /* Reduzido de 16px */
+    }
+
+    .signup-container button {
+        padding: 12px; /* Reduzido de 15px */
+        font-size: 14px; /* Reduzido de 16px */
+    }
+
+    .links-container {
+        font-size: 12px; /* Reduzido de 14px */
+    }
+}
+
+/* Ajustes para dispositivos ainda menores, como smartphones */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 15px;
+        max-width: 100%; /* Ocupa toda a largura */
+    }
+
+    .signup-container h1 {
+        font-size: 20px; /* Reduzido de 24px */
+    }
+
+    .signup-container input,
+    .signup-container select {
+        padding: 10px; /* Reduzido de 12px */
+        font-size: 13px; /* Reduzido de 14px */
+    }
+
+    .signup-container button {
+        padding: 10px; /* Reduzido de 12px */
+        font-size: 13px; /* Reduzido de 14px */
+    }
+
+    .links-container {
+        font-size: 11px; /* Reduzido de 12px */
+    }
+}

@@ -20,8 +20,8 @@
                 <a href="index.html"><img src="../assets/img/logo.png" alt="Logo da Empresa" /></a>
             </div>
 
-            <div class="pesquisar">
-                <input type="text" placeholder="Pesquisar..." />
+            <div class="pesquisar" id="barraPesquisa">
+                <input type="text" id="campoPesquisa" placeholder="Pesquisar..." />
                 <img src="../assets/img/search.svg" alt="Pesquisar" class="lupa">
             </div>
 
@@ -76,14 +76,14 @@
         </div>
         <ul>
             <h5>Painel</h5>
-            <li><a href="home.html">Inicio</a></li>
-            <li><a href="#">Pesquisar</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#barraPesquisa">Pesquisar</a></li>
             <li><a href="#">Produtos</a></li>
             <li><a href="#">Minhas compras</a></li>
             <li><a href="#">Carrinho</a></li>
         </ul>
         <ul>
-            <h5>Usuario</h5>
+            <h5>Usuário</h5>
             <li><a href="">Vinicius Sales</a></li>
             <li><a href="login.html">Encerrar / Sair</a></li>
         </ul>
@@ -199,67 +199,8 @@
     <p class="copyright">&copy; 2024 Flower Garden. Todos os direitos reservados.</p>
 </footer>
 
+<script src="../assets/js/script.js">
+</script>
 
-
-    <script>
-        // script.js
-        document.addEventListener('DOMContentLoaded', () => {
-            const iconeMenu = document.getElementById('iconeMenu');
-            const menuLateral = document.getElementById('menuLateral');
-            const fecharMenu = document.getElementById('fecharMenu');
-
-            // Evento para abrir/fechar o menu lateral ao clicar no ícone do menu
-            iconeMenu.addEventListener('click', (event) => {
-                event.preventDefault(); // Evitar o comportamento padrão do link
-                menuLateral.classList.toggle('ativo'); // Alternar a classe 'ativo'
-            });
-
-            // Evento para fechar o menu lateral ao clicar no botão fechar
-            fecharMenu.addEventListener('click', () => {
-                menuLateral.classList.remove('ativo'); // Remover a classe 'ativo'
-            });
-        });
-
-
-
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const nextButton = document.querySelector('.next');
-    const prevButton = document.querySelector('.prev');
-    let currentIndex = 0;
-
-    function updateCarousel() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active'); // Remove a classe active de todos os slides
-            if (index === currentIndex) {
-                slide.classList.add('active'); // Adiciona a classe active ao slide atual
-            }
-        });
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length; // Avança para o próximo slide
-        updateCarousel();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Volta para o slide anterior
-        updateCarousel();
-    }
-
-    // Configura os eventos dos botões
-    nextButton.addEventListener('click', nextSlide);
-    prevButton.addEventListener('click', prevSlide);
-
-    // Mudar de slide automaticamente a cada 3 segundos
-    setInterval(nextSlide, 6000); // Troca de slide a cada 3 segundos (3000 milissegundos)
-
-    // Atualiza o carrossel inicialmente
-    updateCarousel();
-});
-
-    </script>
 </body>
 </html>

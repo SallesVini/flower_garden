@@ -84,7 +84,8 @@ nav {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #343a40; /* Cor de fundo do dropdown */
+    /*background-color: #f9f9f9;*/
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -94,7 +95,8 @@ nav {
 }
 
 .dropdown-content a {
-    color: black;
+    color: white;
+    /*color: black;*/
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -135,11 +137,11 @@ nav {
     background: none;
     border: none;
     font-size: 24px;
-    color: #bd9c85; /* Cor do botão de fechar */
+    color: #ffffff; /* Cor do botão de fechar */
     cursor: pointer;
     position: absolute; /* Posiciona o botão de fechar dentro do menu */
     top: 14px;
-    right: -25px;
+    right: 20px; /* Ajuste a posição horizontal */
 }
 
 /* Exibir o menu lateral */
@@ -177,11 +179,17 @@ nav {
     color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 
+/* Estilo de foco nos links */
+.menu-lateral ul li a:focus {
+    outline: 2px solid #28a745; /* Destaque verde quando em foco */
+}
+
 /* Estilo para o cabeçalho do menu */
-.menu-lateral h2 {
+.menu-lateral h5 {
     text-align: center; /* Centraliza o título */
     color: #ffffff; /* Cor do texto do título */
-    margin: 20px 0; /* Espaço abaixo do título */
+    margin: 0; /* Remove a margem */
+    padding: 15px; /* Adiciona um pouco de padding */
     font-weight: bold; /* Destaca o título */
 }
 
@@ -209,8 +217,6 @@ nav {
     color: #28a745; /* Cor do status online */
     font-size: 12px; /* Tamanho do texto do status */
 }
-
-
 
 
 
@@ -578,8 +584,66 @@ footer {
     font-size: 12px; /* Reduzido o tamanho da fonte */
 }
 
-/* Responsividade */
+
+/* --------------------------------------Layout responsivo-------------------------------------- */
+
+
+/* Ajustes para telas menores */
 @media screen and (max-width: 768px) {
+    .pesquisar input {
+        width: 80%; /* Ajusta para 80% da largura disponível */
+        max-width: 300px; /* Define um limite máximo */
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .links ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .categorias {
+        display: none; /* Oculta a barra de categorias em dispositivos menores */
+    }
+
+    .menu-lateral {
+        width: 100%; /* Ocupará toda a largura da tela em dispositivos pequenos */
+        max-width: 300px; /* Pode definir um limite se desejar */
+    }
+
+    /* Ajusta o botão de fechar para estar mais visível */
+    .menu-lateral .fechar {
+        top: 10px; /* Ajuste a posição se necessário */
+        right: 10px; /* Ajuste a posição se necessário */
+    }
+
+    /* Aumenta o espaçamento interno nas listas */
+    .menu-lateral ul {
+        padding: 10px; /* Ajusta o padding se necessário */
+    }
+
+    /* Ajuste dos links para ocupar melhor o espaço */
+    .menu-lateral ul li a {
+        padding: 12px 10px; /* Ajuste o padding */
+        font-size: 16px; /* Ajuste o tamanho da fonte */
+    }
+
+    .carrossel-wrapper, .slide img {
+        height: 250px; /* Reduz a altura do carrossel */
+    }
+
+    .grade {
+        flex-direction: column; /* Alinha os itens em coluna */
+        align-items: center;
+    }
+
+    .grade img {
+        width: 150px; /* Ajuste as imagens para dispositivos menores */
+        height: 150px;
+    }
+
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -588,80 +652,97 @@ footer {
     .footer-content > div {
         margin: 5px 0; /* Reduzido o espaçamento entre as seções no mobile */
     }
+
+    footer {
+        padding: 15px; /* Diminui o padding para dispositivos menores */
+    }
 }
 
+@media screen and (max-width: 480px) {
+    .pesquisar input {
+        width: 90%; /* Ajusta para 90% da largura disponível em telas muito pequenas */
+        max-width: none; /* Remove o limite máximo para ocupar mais espaço */
+    }
 
+    /* Barra de navegação */
+    nav .categorias ul li {
+        margin: 0 6px; /* Reduz ainda mais o espaçamento entre itens de navegação */
+    }
 
-/* -------------------------------------------------------------------------------------- */
+    .menu-lateral {
+        width: 100%; /* O menu ocupará toda a largura da tela */
+    }
 
+    .menu-lateral .fechar {
+        top: 10px; /* Ajuste a posição do botão */
+        right: 10px; /* Ajuste a posição do botão */
+    }
 
-/* Tela de login e cadastro*/
-.login-container {
-	background-color: #B7CB99;
-	width: 400px;
-	height: 350px;
-	margin: auto;
-    padding: 30px;
-	margin-top: 70px;
-	text-align: center;
-}
+    /* Adiciona um pouco mais de espaço para os itens do menu */
+    .menu-lateral ul {
+        padding: 5px; /* Ajusta o padding */
+    }
 
-.input-grupo {
-    margin-bottom: 15px;
-}
+    .menu-lateral ul li a {
+        padding: 10px; /* Ajuste o padding */
+        font-size: 14px; /* Ajuste o tamanho da fonte */
+    }
 
-.input-grupo input {
-	height: 40px;
-	width: 100%;
-	font-size: 18px;
-	background-color: #fff;
-	padding-left: 40px;
-	border: none;
-    border-radius: 20px;
-	background-repeat: no-repeat;
-	background-position: 10px;
-    outline: none; /* Remove contorno ao focar */
-    transition: border-color 0.3s;
-}
+    /* Aumenta o tamanho do perfil para melhor visibilidade */
+    .menu-lateral .perfil img {
+        width: 40px; /* Ajusta o tamanho da imagem do perfil */
+        height: 40px;
+    }
 
-.input-grupo input:focus {
-    border-color: #666; /* Altera a cor da borda ao focar */
-}
+    .menu-lateral .perfil .nome {
+        font-size: 14px; /* Ajusta o tamanho do nome */
+    }
 
-input.email {
-	background-image: url(../img/icone-usuario.png);
-}
+    .menu-lateral .perfil .status {
+        font-size: 10px; /* Ajusta o tamanho do status */
+    }
 
-input.senha {
-	background-image: url(../img/icone-cadeado.png);
-}
+    /* Carrossel de imagens */
+    .carrossel-wrapper {
+        height: 280px; /* Ajusta a altura do carrossel para caber melhor em smartphones */
+    }
 
-button {
-    background-color: #fff; 
-    color: #9ab47a;
-    font-weight: bold;
-    border: none;
-    padding: 10px;
-    width: 100px;
-    border-radius: 5px; 
-    font-size: 16px;
-    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-    transition: background-color 0.3s;
-}
+    .slide img {
+        height: 280px; /* Ajusta a altura da imagem para o carrossel */
+    }
 
-button:hover {
-    /*background-color: ;  Cor ao passar o mouse */
-}
+    /* Título da seção de mais comprados */
+    .mais-comprados h2 {
+        font-size: 16px; /* Reduz o tamanho do título */
+        padding: 3px; /* Ajusta o espaçamento interno */
+    } 
 
-p {
-    margin-top: 10px; /* Espaço acima do parágrafo */
-    padding: 15px;
-}
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-p a {
-    color: #000; /* Cor do link */
-}
+    .footer-content > div {
+        margin: 8px 0; /* Ajusta o espaçamento entre as seções para facilitar a leitura */
+        width: 100%; /* Assegura que as colunas ocupem 100% da largura da tela */
+    }
 
-p a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    /* Ajusta os textos e inputs no formulário de contato */
+    .form-contato input, 
+    .form-contato textarea {
+        font-size: 14px; /* Reduz um pouco o tamanho da fonte para caber melhor na tela */
+        padding: 6px; /* Reduz o padding para economizar espaço */
+    }
+
+    .form-contato button {
+        width: 100%; /* Botão ocupará toda a largura da tela */
+        padding: 8px; /* Reduz o padding para economizar espaço */
+    }
+
+    /* Reduz tamanho de ícones de redes sociais */
+    .redes-sociais img {
+        width: 24px; /* Tamanho menor para smartphones */
+        height: 24px;
+    }
 }
