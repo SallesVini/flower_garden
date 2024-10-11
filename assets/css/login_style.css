@@ -1,0 +1,221 @@
+/* Estilos globais */
+body {
+    background-color: #e4e3e3; /* Cor de fundo neutra */
+    background-image: url("../assets/img/flowers-background.png"); /* Imagem de flores suave */
+    background-size: cover; /* Cobre toda a área da tela */
+
+    /*background-size: contain;  A imagem será dimensionada para caber no container */
+    background-repeat: no-repeat; /* Evitar repetição da imagem */
+    background-position: top center; /* Centraliza no topo */
+    background-attachment: fixed; /* Fixa a imagem ao fundo ao rolar a página */
+    font-family: 'Arial', sans-serif; /* Definir a fonte padrão */
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajuste de cor e layout geral */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Suaviza ainda mais o fundo */
+    z-index: -1; /* Para manter atrás do conteúdo principal */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* para ocupar toda a altura da tela */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.login-container {
+    background-color: #ffffff;
+    background-image: url("../img/download.jpeg");
+    background-size: cover; /* A imagem cobre toda a área do container */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center; /* Centraliza a imagem no container */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(182, 181, 181, 0.5);
+    padding: 40px 30px; /* Ajuste para garantir espaçamento interno */
+    width: 100%;
+    max-width: 400px; /* Limitar a largura do container */
+    min-height: 480px; /* Altura mínima para caber o conteúdo */
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    color: #ffffff; /* Texto branco para contraste com a imagem de fundo */
+}
+
+/* Opção para sobrepor um filtro escuro, garantindo que o texto permaneça legível */
+.login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(183, 203, 153, 0.5); /* Cor preta com 50% de opacidade */
+    border-radius: 10px;
+    z-index: 0; /* Para garantir que o conteúdo fique acima do fundo */
+}
+
+/* Estilos internos permanecem no topo da imagem de fundo */
+.login-container * {
+    position: relative;
+    z-index: 1; /* Coloca o conteúdo acima do fundo e do overlay */
+}
+
+/* Estilo do título */
+.login-container h1 {
+    font-size: 28px;
+    color: #bd9c85;
+    margin-bottom: 10px;
+}
+
+/* Estilo da mensagem menor */
+.login-container h5 {
+    font-size: 14px;
+    color: #707070;
+    margin-bottom: 20px;
+}
+
+/* Estilos dos inputs */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #b7cb99;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Botão de login */
+.login-container button {
+    width: 100%;
+    background-color: #90a083;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.login-container button:hover {
+    background-color: #79866f;
+}
+
+/* Links personalizados */
+.links-container {
+    margin-top: 9px; /* Espaço acima */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #3f322c; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+}
+
+.links-container a {
+    color: #8f7161; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.links-container a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estilo do segundo link */
+.links-container span {
+    display: block; /* Faz com que o texto fique em um novo bloco */
+    margin-top: 5px; /* Espaçamento entre os links */
+}
+
+/* Logo */
+.login-container img.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Garantir que o layout interno do formulário esteja centralizado */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+/* --------------------------------------Layout responsivo-------------------------------------- */
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+        width: 90%;
+        max-width: 350px;
+        margin-bottom: 20px;
+    }
+
+    .login-container h1 {
+        font-size: 22px; 
+    }
+
+    .login-container h5 {
+        font-size: 12px; 
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"],
+    .login-container button {
+        font-size: 14px; 
+        padding: 12px; 
+    }
+
+    .links-container {
+        font-size: 12px; 
+    }
+}
+
+/* Ajustes para dispositivos ainda menores, como smartphones */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .login-container img.logo {
+        width: 70px; 
+    }
+
+    .login-container h1 {
+        font-size: 18px; 
+    }
+
+    .login-container h5 {
+        font-size: 11px; 
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+        font-size: 13px; 
+        padding: 10px; 
+    }
+
+    .login-container button {
+        padding: 10px; 
+        font-size: 13px; 
+    }
+
+    .links-container {
+        font-size: 11px; 
+    }
+}

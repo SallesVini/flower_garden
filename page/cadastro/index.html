@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Tela de Cadastro do Flower-Garden">
+    <title>Flower-Garden | Cadastro</title>
+    <link rel="stylesheet" href="../../assets/css/cadastro_style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Cadastro -->
+        <section class="signup-container">
+            <h1>Crie sua Conta</h1>
+            
+            <form action="../login" method="post">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="text" name="cpf" placeholder="CPF" required>
+                <input type="text" name="Email" placeholder="Email" required>
+                <input type="text" name="Telefone" placeholder="Telefone" required>
+                <input type="text" name="Senha" placeholder="Senha" required>
+                <input type="text" name="Confirmar Senha" placeholder="Confirmar Senha" required>
+                <input type="text" name="" class="hidden-input" placeholder="" required>
+
+                <!-- Seletor de CPF -->
+                <select name="opcao" required>
+                    <option value="" disabled selected>Selecione seu usário</option>
+                    <option value="opcao1">Comum</option>
+                    <option value="opcao2">Vendedor</option>
+                    <option value="opcao3">ADM</option>
+                </select>
+
+                <button>Cadastrar</button>
+            </form>
+
+            <div class="links-container">
+                <span>Já tem sua conta? <a href="../login">Então faça o Login</a></span>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

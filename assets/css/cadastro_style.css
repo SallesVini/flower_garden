@@ -1,0 +1,190 @@
+/* Estilos globais */
+body {
+    background-color: #e4e3e3;
+    background-image: url("../assets/img/flowers-background.png");
+    background-size: cover; /* A imagem cobre toda a área do corpo */
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+}
+
+.signup-container {
+    background-image: url("../img/download.jpeg");
+    background-size: cover; /* A imagem cobre toda a área do container */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(182, 181, 181, 0.5);
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 580px; /* Limitar a largura do container */
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    color: #ffffff; /* Texto branco para contraste com a imagem de fundo */
+}
+
+.signup-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(183, 203, 153, 0.5); /* Cor com opacidade para legibilidade */
+    border-radius: 10px;
+    z-index: 0; /* Coloca o filtro atrás do conteúdo */
+}
+
+.signup-container * {
+    position: relative;
+    z-index: 1; /* Coloca o conteúdo acima do fundo e do overlay */
+}
+
+.signup-container h1 {
+    font-size: 28px;
+    color: #bd9c85;
+    margin-bottom: 10px;
+}
+
+/* Estilo dos inputs */
+.signup-container input,
+.signup-container select {
+    width: 48%;
+    padding: 15px;
+    margin: 10px 1%; /* Margem lateral para espaçamento */
+    border-radius: 5px;
+    border: 1px solid #b7cb99;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    width: 100%; /* Redefine a largura para 100% nos campos de email e senha */
+}
+
+.hidden-input {
+    visibility: hidden;
+}
+
+/* Botão de cadastro */
+.signup-container button {
+    width: 100%;
+    background-color: #90a083;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.signup-container button:hover {
+    background-color: #79866f;
+}
+
+/* Links personalizados */
+.links-container {
+    margin-top: 10px; /* Espaço acima */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #3f322c; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+}
+
+.links-container a {
+    color: #8f7161; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.links-container a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Garantir que o layout interno do formulário esteja centralizado */
+form {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os inputs se ajustem em múltiplas linhas */
+    justify-content: space-between; /* Distribui os elementos de forma uniforme */
+    width: 100%;
+}
+
+.signup-container select {
+    background-color: #ffffff; /* Cor de fundo do select */
+    color: #333; /* Cor do texto */
+    background-image: url('../assets/img/arrow-down.svg'); /* Adicione o caminho para a imagem da seta */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Posição da seta */
+    background-size: 15px; /* Tamanho da seta */
+}
+
+/* --------------------------------------Layout responsivo-------------------------------------- */
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 20px;
+        max-width: 90%; /* Aumenta a largura para ocupar mais espaço */
+    }
+
+    .signup-container h1 {
+        font-size: 24px; /* Reduzido de 28px */
+    }
+
+    .signup-container input,
+    .signup-container select {
+        width: 100%; /* Ocupa toda a largura */
+        margin: 10px 0; /* Margem vertical */
+        padding: 12px; /* Reduzido de 15px */
+        font-size: 14px; /* Reduzido de 16px */
+    }
+
+    .signup-container button {
+        padding: 12px; /* Reduzido de 15px */
+        font-size: 14px; /* Reduzido de 16px */
+    }
+
+    .links-container {
+        font-size: 12px; /* Reduzido de 14px */
+    }
+}
+
+/* Ajustes para dispositivos ainda menores, como smartphones */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 15px;
+        max-width: 90%; /* Ocupa toda a largura */
+    }
+
+    .signup-container h1 {
+        font-size: 20px; /* Reduzido de 24px */
+    }
+
+    .signup-container input,
+    .signup-container select {
+        padding: 10px; /* Reduzido de 12px */
+        font-size: 13px; /* Reduzido de 14px */
+    }
+
+    .signup-container button {
+        padding: 10px; /* Reduzido de 12px */
+        font-size: 13px; /* Reduzido de 14px */
+    }
+
+    .links-container {
+        font-size: 11px; /* Reduzido de 12px */
+    }
+}

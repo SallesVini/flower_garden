@@ -1,0 +1,922 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Estilizando a barra de navegação */
+nav {
+    width: 100%;
+    background-color: #B7CB99; /* Cor de fundo verde claro */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Distribui os itens nas extremidades */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+
+/* Logo */
+.logo a img {
+    width: 190px;
+    height: auto;
+}
+
+
+/* Campo de pesquisa centralizado */
+.pesquisar {
+    flex-grow: 1; /* Permite que a pesquisa ocupe o espaço disponível */
+    display: flex;
+    justify-content: center; /* Centraliza o campo de pesquisa */
+    position: relative; /* Necessário para o posicionamento absoluto do ícone */
+}
+
+
+.pesquisar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Bordas arredondadas */
+    width: 500px; /* Largura do campo de pesquisa */
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+
+.pesquisar input::placeholder {
+    color: #999;
+}
+
+
+.pesquisar input:focus {
+    border: 1px solid #666; /* Mudar borda ao focar */
+}
+
+.pesquisar .lupa {
+    position: absolute; /* Posiciona o ícone da lupa */
+    right: 24%; /* Distância da borda direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta o posicionamento */
+    width: 20px; /* Largura do ícone */
+    height: 20px; /* Altura do ícone */
+    pointer-events: none; /* Impede que cliques no ícone afetem a entrada de texto */
+}
+
+
+/* Ícones de tradução e usuário/carrinho/menu */
+.traducao, .links {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Estilo para o dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0; /* Alinha à direita do ícone */
+    border-radius: 4px;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar o dropdown quando o ícone for clicado */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Estilo do menu lateral */
+.menu-lateral {
+    position: fixed; /* Fixa o menu lateral na tela */
+    right: 0; /* Posiciona à direita */
+    top: 0; /* Começa no topo */
+    height: 100%; /* Preenche a altura da tela */
+    width: 280px; /* Largura do menu */
+    background-color: #343a40; /* Cor de fundo do menu (escuro) */
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidade */
+    transform: translateX(100%); /* Inicialmente fora da tela */
+    transition: transform 0.3s ease; /* Efeito de transição suave */
+    z-index: 1000; /* Coloca acima de outros elementos */
+    border-radius: 8px 0 0 8px; /* Bordas arredondadas no lado esquerdo */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+    overflow-x: hidden; /* Remove o scroll horizontal */
+    color: #ffffff; /* Cor do texto */
+}
+
+/* Estilo do botão de fechar */
+.menu-lateral .fechar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffffff; /* Cor do botão de fechar */
+    cursor: pointer;
+    position: absolute; /* Posiciona o botão de fechar dentro do menu */
+    top: 14px;
+    right: 20px; /* Ajuste a posição horizontal */
+}
+
+/* Exibir o menu lateral */
+.menu-lateral.ativo {
+    transform: translateX(0); /* Move para dentro da tela */
+}
+
+/* Estilo das listas no menu */
+.menu-lateral ul {
+    list-style: none;
+    padding: 15px; /* Espaçamento interno */
+    margin: 0; /* Remove margens */
+}
+
+/* Estilo para itens de menu */
+.menu-lateral ul li {
+    margin: 8px 0; /* Espaçamento entre os itens */
+}
+
+/* Estilo dos links */
+.menu-lateral ul li a {
+    text-decoration: none;
+    color: #ffffff; /* Cor do texto do link */
+    font-size: 17px; /* Tamanho da fonte */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas nos links */
+    display: block; /* Para ocupar toda a largura do li */
+    transition: background-color 0.3s, color 0.3s; /* Efeito de transição suave */
+    background-color: transparent; /* Fundo transparente por padrão */
+}
+
+/* Efeito de hover nos links */
+.menu-lateral ul li a:hover {
+    background-color: #495057; /* Fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilo de foco nos links */
+.menu-lateral ul li a:focus {
+    outline: 2px solid #28a745; /* Destaque verde quando em foco */
+}
+
+/* Estilo para o cabeçalho do menu */
+.menu-lateral h5 {
+    text-align: center; /* Centraliza o título */
+    color: #ffffff; /* Cor do texto do título */
+    margin: 0; /* Remove a margem */
+    padding: 15px; /* Adiciona um pouco de padding */
+    font-weight: bold; /* Destaca o título */
+}
+
+/* Estilo do perfil */
+.menu-lateral .perfil {
+    display: flex;
+    align-items: center;
+    padding: 20px; /* Espaçamento interno do perfil */
+}
+
+.menu-lateral .perfil img {
+    border-radius: 50%; /* Imagem do perfil redonda */
+    width: 50px; /* Tamanho da imagem */
+    height: 50px; /* Tamanho da imagem */
+    margin-right: 10px; /* Espaço à direita da imagem */
+    cursor: pointer;
+}
+
+.menu-lateral .perfil .nome {
+    color: #ffffff; /* Cor do nome */
+    font-size: 16px; /* Tamanho do nome */
+    cursor: pointer;
+}
+
+/* Estilo do status online */
+.menu-lateral .perfil .status {
+    color: #28a745; /* Cor do status online */
+    font-size: 12px; /* Tamanho do texto do status */
+    cursor: pointer;
+}
+
+
+
+/* Estilo geral do ícone de usuário */
+#userIcon {
+    cursor: pointer;
+}
+
+
+/* Ícones de tradução */
+.traducao a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.traducao a img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Ícones de usuário, carrinho e menu */
+.links ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+
+.links ul li {
+    margin-left: 20px;
+}
+
+
+.links ul li a img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.links ul li a img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Estilo das categorias */
+nav .categorias {
+    display: flex;
+    overflow-x: auto;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #b7cc8f; /* Outra tonalidade de verde */
+}
+
+
+nav .categorias a {
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+
+nav .categorias a:hover {
+    background-color: #9ab47a;
+    border-radius: 5px;
+}
+
+
+.categorias {
+    background-color: #B7CB99; /* Fundo das categorias */
+    padding: 10px 0;
+}
+
+
+.categorias ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+
+.categorias ul li {
+    margin: 0 5px;
+}
+
+
+/* Adicionando o pipe entre os itens */
+.categorias ul li:not(:last-child)::after {
+    content: '|'; /* Adiciona o pipe */
+    margin-left: 15px; /* Espaçamento entre o link e o pipe */
+    color: #333; /* Cor do pipe */
+}
+
+
+.categorias ul li a {
+    text-decoration: none;
+    color: #fff; /* Cor do texto dos links */
+    transition: color 0.3s; /* Efeito de transição ao passar o mouse */
+}
+
+
+.categorias ul li a:hover {
+    color: #0E5720; /* Cor ao passar o mouse */
+    font-weight: bold;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+.carrossel-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: y0px; /* Defina a altura desejada */
+}
+
+.slide {
+    display: none; /* Esconder todos os slides inicialmente */
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1s ease-in-out; /* Transição suave para a opacidade */
+}
+
+.slide img {
+    width: 100%;
+    height: 380px;
+}
+
+.slide.active {
+    display: block; /* Mostrar apenas o slide ativo */
+    opacity: 1; /* Torna o slide ativo visível */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+/* Mais comprados */
+.mais-comprados {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+}
+
+.mais-comprados h2 {
+    margin-bottom: 10px; 
+    background-color: #B7CB99; 
+    color: #fff; 
+    font-weight: normal; 
+    padding: 5px 10px; 
+    border-radius: 20px; 
+    font-size: 20px;
+    display: inline-flex; /* Permite que o espaço interno seja aplicado corretamente */
+    align-items: center; /* Alinha verticalmente o texto e a seta */
+    position: relative; /* Para posicionar a seta */
+    cursor: pointer;
+}
+
+/* Adicionando a seta como um pseudo-elemento */
+.mais-comprados h2::after {
+    content: '';
+    display: inline-block; /* Necessário para aplicar largura e altura */
+    width: 15px; /* Largura da seta */
+    height: 15px; /* Altura da seta */
+    background: url("../img/arrow-open.svg") no-repeat;
+    background-size: contain; /* Faz com que a imagem se ajuste ao tamanho definido */
+    margin-left: 5px; /* Espaçamento entre o texto e a seta */
+    transition: all 0.3s ease; /* Transição suave para a seta */
+}
+
+/* Efeito ao passar o mouse */
+.mais-comprados h2:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do h2 */
+}
+
+.mais-comprados h2:hover::after {
+    transform: scale(1.1); /* Aumenta o tamanho da seta */
+}
+
+
+.grade {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+}
+
+.item p {
+    margin: 10px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comprar {
+    background-color: #d8b59b;
+    color: white;
+    border: none;
+    padding: 6px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.comprar:hover {
+    background-color: #ba927d;
+}
+
+.preco {
+    font-weight: bold;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Remover sublinhado dos links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.grade a {
+    text-decoration: none;
+}
+
+.grade img {
+    width: 200px;
+    height: 200px;  /* Força todas as imagens a terem o mesmo tamanho */
+    object-fit: cover;  /* Garante que as imagens se ajustem à área de 150x150px */
+    padding: 5px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.grade img:hover {
+    border-color: #000;
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+/* Rodapé */
+footer {
+    background-color: #B7CB99;
+    color: #fff;
+    padding: 12px 12px; /* Reduzido o padding geral */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1210px;
+    margin: 0 auto;
+    align-items: flex-start; /* Certifica-se de alinhar os itens ao topo */
+}
+
+/* Flex para as colunas */
+.footer-content > div {
+    flex: 1;
+    margin: 10px; /* Reduzido o espaçamento entre as seções */
+    min-width: 200px; /* Garantir que as colunas não fiquem muito estreitas */
+}
+
+/* Ajuste as margens das colunas */
+.links-uteis {
+    margin-right: 40px; /* Aumente a distância entre Links Úteis e Contato */
+}
+
+.contato {
+    margin-right: 40px; /* Aumente a distância entre Contato e Siga-nos */
+}
+
+/* Remover a margem direita da última coluna (formulário de contato) */
+.form-contato {
+    margin-right: 0; /* Remove margem da última coluna (formulário de contato) */
+}
+
+.contato h3, .links-uteis h3, .redes-sociais h3, .form-contato h3 {
+    margin-bottom: 10px; /* Diminuído o espaçamento dos títulos */
+    font-size: 18px; /* Reduzido o tamanho da fonte dos títulos */
+    color: #559465;
+}
+
+.contato p {
+    margin: 3px 0; /* Reduzido o espaçamento entre os parágrafos */
+}
+
+.form-contato input, 
+.form-contato textarea {
+    width: 100%;
+    padding: 10px; /* Reduzido o padding dos inputs e textarea */
+    margin-bottom: 10px; /* Reduzido o espaçamento inferior */
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-contato button {
+    background-color: #559465;
+    color: #fff;
+    padding: 8px 15px; /* Reduzido o padding do botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-contato button:hover {
+    background-color: #568662;
+}
+
+
+.links-uteis h3 {
+    margin-left: 34px;;
+}
+
+.links-uteis ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 34px;
+}
+
+.links-uteis ul li {
+    margin: 5px 0; /* Reduzido o espaçamento entre os links */
+}
+
+.links-uteis ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.links-uteis ul li a:hover {
+    color: #bd9c85;
+}
+
+.redes-sociais a {
+    display: inline-block;
+    margin-right: 2px; /* Reduzido o espaçamento entre os ícones de redes sociais */
+    transition: background-color 0.3s ease; /* Transição suave */
+    padding: 2px; /* Adicione padding ao redor dos ícones */
+}
+
+.redes-sociais a:hover {
+    background-color: #bd9c85; /* Cor desejada ao passar o mouse */
+    border-radius: 5px; /* Arredondar os cantos */
+}
+
+.redes-sociais img {
+    width: 28px; /* Diminuído o tamanho dos ícones de redes sociais */
+    height: 28px;
+    filter: brightness(0) invert(1); /* Se necessário, ajuste isso para a aparência original */
+}
+
+/* Copyright */
+.copyright {
+    text-align: end;
+    margin-right: 70px;
+    padding: 10px 0; /* Reduzido o padding da seção de copyright */
+    font-size: 12px; /* Reduzido o tamanho da fonte */
+}
+
+
+/* --------------------------------------Chatbot-------------------------------------- */
+
+
+.whatsapp-fixo {
+    position: fixed;
+    bottom: 5px;
+    right: 6px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s; /* Transição suave */
+}
+
+.whatsapp-fixo:hover {
+    transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}
+
+.whatsapp-fixo:active {
+    transform: scale(0.9); /* Diminui o tamanho ao clicar */
+}
+
+.whatsapp-fixo img {
+    width: 35px;
+    height: 35px;
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 70px;
+    right: 6px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #559465;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.chat-content {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-bottom-left-radius: 8px;
+}
+
+.chat-input button {
+    background-color: #559465;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* --------------------------------------Layout responsivo-------------------------------------- */
+
+
+/* Ajustes para telas menores */
+@media screen and (max-width: 768px) {
+    .pesquisar input {
+        width: 80%; /* Ajusta para 80% da largura disponível */
+        max-width: 300px; /* Define um limite máximo */
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .links ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .categorias {
+        display: none; /* Oculta a barra de categorias em dispositivos menores */
+    }
+
+    .menu-lateral {
+        width: 100%; /* Ocupará toda a largura da tela em dispositivos pequenos */
+        max-width: 300px; /* Pode definir um limite se desejar */
+    }
+
+    /* Ajusta o botão de fechar para estar mais visível */
+    .menu-lateral .fechar {
+        top: 10px; /* Ajuste a posição se necessário */
+        right: 10px; /* Ajuste a posição se necessário */
+    }
+
+    /* Aumenta o espaçamento interno nas listas */
+    .menu-lateral ul {
+        padding: 10px; /* Ajusta o padding se necessário */
+    }
+
+    /* Ajuste dos links para ocupar melhor o espaço */
+    .menu-lateral ul li a {
+        padding: 12px 10px; /* Ajuste o padding */
+        font-size: 16px; /* Ajuste o tamanho da fonte */
+    }
+
+    .carrossel-wrapper, .slide img {
+        height: 250px; /* Reduz a altura do carrossel */
+    }
+
+    .grade {
+        flex-direction: column; /* Alinha os itens em coluna */
+        align-items: center;
+    }
+
+    .grade img {
+        width: 150px; /* Ajuste as imagens para dispositivos menores */
+        height: 150px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-content > div {
+        margin: 5px 0; /* Reduzido o espaçamento entre as seções no mobile */
+    }
+
+    footer {
+        padding: 15px; /* Diminui o padding para dispositivos menores */
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* Contêiner de navegação */
+    .navbar {
+        display: flex; /* Coloca os elementos em linha */
+        align-items: center; /* Alinha verticalmente ao centro */
+        justify-content: space-between; /* Ajusta o espaço entre a logo e a pesquisa */
+        padding: 10px;
+        background-color: #d1e7d1; /* Cor de fundo, ajusta como preferires */
+    }
+
+    /* Estilos da logo */
+    .logo {
+        flex: 0 0 auto; /* Mantém a logo no seu tamanho natural */
+        width: 23%; /* Ajusta conforme necessário */
+        height: auto;
+        overflow: hidden;
+    }
+
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Estilos da barra de pesquisa */
+    .pesquisar {
+        flex: 1; /* Permite que a barra de pesquisa ocupe o espaço disponível */
+        display: flex;
+        align-items: center;
+    }
+
+    .pesquisar input {
+        width: 100%; /* Ocupa todo o espaço restante */
+        max-width: 500px; /* Define um tamanho máximo, ajusta conforme necessário */
+        padding: 5px 10px;
+        border-radius: 25px; /* Borda arredondada */
+        border: 1px solid #ccc; /* Cor da borda */
+    }
+    
+
+
+
+
+
+
+
+    .menu-lateral {
+        width: 100%; /* O menu ocupará toda a largura da tela */
+    }
+
+    .menu-lateral .fechar {
+        top: 10px; /* Ajuste a posição do botão */
+        right: 10px; /* Ajuste a posição do botão */
+    }
+
+    /* Adiciona um pouco mais de espaço para os itens do menu */
+    .menu-lateral ul {
+        padding: 5px; /* Ajusta o padding */
+    }
+
+    .menu-lateral ul li a {
+        padding: 10px; /* Ajuste o padding */
+        font-size: 14px; /* Ajuste o tamanho da fonte */
+    }
+
+    /* Aumenta o tamanho do perfil para melhor visibilidade */
+    .menu-lateral .perfil img {
+        width: 40px; /* Ajusta o tamanho da imagem do perfil */
+        height: 40px;
+    }
+
+    .menu-lateral .perfil .nome {
+        font-size: 14px; /* Ajusta o tamanho do nome */
+    }
+
+    .menu-lateral .perfil .status {
+        font-size: 10px; /* Ajusta o tamanho do status */
+    }
+
+    /* Carrossel de imagens */
+    .carrossel-wrapper {
+        height: 280px; /* Ajusta a altura do carrossel para caber melhor em smartphones */
+    }
+
+    .slide img {
+        height: 280px; /* Ajusta a altura da imagem para o carrossel */
+    }
+
+    /* Título da seção de mais comprados */
+    .mais-comprados h2 {
+        font-size: 16px; /* Reduz o tamanho do título */
+        padding: 3px; /* Ajusta o espaçamento interno */
+    } 
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-content > div {
+        margin: 8px 0; /* Ajusta o espaçamento entre as seções para facilitar a leitura */
+        width: 100%; /* Assegura que as colunas ocupem 100% da largura da tela */
+    }
+
+    /* Ajusta os textos e inputs no formulário de contato */
+    .form-contato input, 
+    .form-contato textarea {
+        font-size: 14px; /* Reduz um pouco o tamanho da fonte para caber melhor na tela */
+        padding: 6px; /* Reduz o padding para economizar espaço */
+    }
+
+    .form-contato button {
+        width: 100%; /* Botão ocupará toda a largura da tela */
+        padding: 8px; /* Reduz o padding para economizar espaço */
+    }
+
+    /* Reduz tamanho de ícones de redes sociais */
+    .redes-sociais img {
+        width: 24px; /* Tamanho menor para smartphones */
+        height: 24px;
+    }
+}
