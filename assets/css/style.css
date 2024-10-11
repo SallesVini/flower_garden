@@ -59,7 +59,7 @@ nav {
 
 .pesquisar .lupa {
     position: absolute; /* Posiciona o ícone da lupa */
-    right: 24%; /* Distância da borda direita */
+    right: 29%; /* Distância da borda direita */
     top: 50%; /* Centraliza verticalmente */
     transform: translateY(-50%); /* Ajusta o posicionamento */
     width: 20px; /* Largura do ícone */
